@@ -15,7 +15,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
 @Configuration
-@EnableJpaRepositories(basePackages = {"com.aileron.workshop.repository"})
+//@EnableJpaRepositories(basePackages = {"com.aileron.workshop.repository"})
 @EnableTransactionManagement
 public class SpringConfig {
     @Bean
@@ -23,7 +23,7 @@ public class SpringConfig {
 
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/forum");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/forum?useSSl=false");
         dataSource.setUsername("root");
         dataSource.setPassword("password");
         return dataSource;
