@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 
 @Entity
@@ -13,11 +14,11 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.AUTO)
 
     private Long id;
-    private DateTimeFormat createDate;
+    private Date createDate;
     private String text;
-    private DateTimeFormat modifyDate;
+    private Date modifyDate;
     private Long userId;
-    private DateTimeFormat deleteDate;
+    private Date deleteDate;
 
     public Long getId() {
         return id;
@@ -27,11 +28,11 @@ public class Post {
         this.id = id;
     }
 
-    public DateTimeFormat getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(DateTimeFormat createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 
@@ -43,11 +44,11 @@ public class Post {
         this.text = text;
     }
 
-    public DateTimeFormat getModifyDate() {
+    public Date getModifyDate() {
         return modifyDate;
     }
 
-    public void setModifyDate(DateTimeFormat modifyDate) {
+    public void setModifyDate(Date modifyDate) {
         this.modifyDate = modifyDate;
     }
 
@@ -59,11 +60,11 @@ public class Post {
         this.userId = userId;
     }
 
-    public DateTimeFormat getDeleteDate() {
+    public Date getDeleteDate() {
         return deleteDate;
     }
 
-    public void setDeleteDate(DateTimeFormat deleteDate) {
+    public void setDeleteDate(Date deleteDate) {
         this.deleteDate = deleteDate;
     }
 }
