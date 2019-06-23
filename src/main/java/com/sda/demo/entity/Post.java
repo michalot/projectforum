@@ -1,6 +1,5 @@
 package com.sda.demo.entity;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,9 +15,12 @@ public class Post {
     private Long id;
     private Date createDate;
     private String text;
-    private Date modifyDate;
-    private Long userId;
+    private Date modifyDate;    private Long userId;
     private Date deleteDate;
+
+    public Post( ) {
+
+    }
 
     public Long getId() {
         return id;
