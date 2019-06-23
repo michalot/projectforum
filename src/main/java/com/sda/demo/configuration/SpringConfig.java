@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 
-
 @Configuration
 //@EnableJpaRepositories(basePackages = {"com.aileron.workshop.repository"})
 @EnableTransactionManagement

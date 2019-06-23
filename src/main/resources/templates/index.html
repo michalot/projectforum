@@ -4,15 +4,34 @@
 <head>
     <meta charset="UTF-8"/>
 
-    <title>Welcome to the Forum page!</title> <head/>
+    <title>Welcome to the Forum page!</title> </head>
 
-    <link type="text/css" rel="stylesheet"
-          href="../static/css/style.css"
-          th:href="@{css/style.css}"/>
+<link type="text/css" rel="stylesheet"
+      href="../static/css/style.css"
+      th:href="@{css/style.css}"/>
 
-    <link rel ="stylesheet"
-          href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel ="stylesheet"
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" id="bootstrap-css"/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<body>
+<h1>Welcome to the forum page :)</h1>
 
-   <html/>
+<form action="/users">
+    <button class="btn btn-success" type="submit"> Użytkownicy</button>
+</form>
+
+<form action="/adduser">
+    <button class="btn btn-primary" type="submit"> Dodaj użytkownika</button>
+</form>
+
+<form action="/find">
+    <button class="btn btn-warning" type="submit"> Szukaj użytkownika</button>
+</form>
+
+<form action="/addapplicationuser">
+    <button class="btn btn-danger" type="submit">Dodaj użytkownika systemu</button>
+</form>
+</body>
+
+</html>
