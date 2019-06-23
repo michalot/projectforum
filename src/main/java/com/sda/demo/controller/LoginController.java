@@ -1,4 +1,4 @@
-package sda.workshop.MvcApp.controller;
+package com.sda.demo.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
