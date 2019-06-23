@@ -2,6 +2,8 @@ package com.sda.demo.service;
 
 import com.sda.demo.entity.User;
 import com.sda.demo.model.UserDto;
+import com.sda.demo.repository.UserRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +26,7 @@ public class UserService {
     }
 
     public void deleteUser(UserDto userDto){
-        User user = userRepository.findUserByNameAndSurname(userDto.getName(), userDto.getSurname())
+        User user = userRepository.findUserByLogin(userDto.getLogin())
                 .orElseThrow(()-> new RuntimeException("User Not Found!"));
         userRepository.delete(user);
     }
