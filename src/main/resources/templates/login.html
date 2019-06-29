@@ -1,15 +1,27 @@
 <!DOCTYPE html>
-<html xmlns="http:/>/www.w3.org/1999.xhtml"
-      xmln:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Logowanie</title>
-</head>
-<body>
-<div>
-    <h2 style="text-align: left;">LOGIN</h2>
-</div>
-<form action="/action" method="post">Login: <input type="text" /> <br /> Password: <input type="password" />
-    <br /> <input type="submit" value="Submit" /></form>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<meta charset="UTF-8"/>
+
+<title>LOGIN</title>
+
+<body class="text-center">
+<form class="sign" method="post" th:action="@{/login-process}">
+
+    <p class="alert alert-danger" th:if="${param.error}" th:text="'Podany login lub hasło są nieprawidłowe'"/>
+
+    <h3>Log in</h3>
+    <label for="inputLogin">Login:</label>
+    <input id="inputLogin" name="username" placeholder="Podaj login"
+           th:required="required" type="text"/>
+
+    <label for="inputPassword">Password:</label>
+    <input id="inputPassword" name="password"
+           placeholder="Podaj hasło"
+           th:requred="required" type="password"/>
+
+    <button type="submit">Zaloguj</button>
+
+</form>
 </body>
 </html>

@@ -1,14 +1,24 @@
 <!DOCTYPE html>
-<html xmlns="http:/>/www.w3.org/1999.xhtml"
-      xmln:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+>
 <head>
     <meta charset="UTF-8"/>
     <title>Welcome to the Forum page!</title>
 </head>
 <body>
-<h2 style="text-align: center;"></br><span style="color: #517aff;">Welcome to the Forum Page!</span></h2>
-<h3 style="text-align: center;"><button> Log in </button></h3>
-<h3 style="text-align: center;"><button> Register </button></h3>
-<p>&nbsp;</p>
+<h2 style="text-align: center;">
+    <span style="color: #517aff;">Welcome to the Forum Page!</span></h2>
+<h3 style="text-align: center;">
+    <form action="/login">
+        <button> Log in</button>
+    </form>
+</h3>
+
+<h3 style="text-align: center;">
+    <form action="/register">
+        <button> Register</button>
+
+    </form>
+</h3>
 </body>
 </html>

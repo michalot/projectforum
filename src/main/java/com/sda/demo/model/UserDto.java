@@ -11,6 +11,15 @@ public class UserDto {
     private Date lockDate;
     private Date unlockDate;
     private Long userDetailsId;
+    private UserDetailsDto userDetailsDto;
+
+    public UserDetailsDto getUserDetailsDto() {
+        return userDetailsDto;
+    }
+
+    public void setUserDetailsDto(UserDetailsDto userDetailsDto) {
+        this.userDetailsDto = userDetailsDto;
+    }
 
     public UserDto() {
     }

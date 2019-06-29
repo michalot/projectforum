@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html xmlns="http:/>/www.w3.org/1999.xhtml"
-      xmln:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-
-    <title>Register in forum</title>
+    <title>Register in Forum</title>
 </head>
 <h3>User form</h3>
-
 <body class="text-center">
-<form class="sign" th:action="@{/register-link}" method="post" th:object="${userToInsert}">
+<form class="sign" method="post" th:action="@{/register}" th:object="${userToInsert}">
     <p>Name:
-        <input type="text" th:field="*{name}"/>
+        <input th:field="*{userDetailsDto.name}" type="text"/>
     </p>
     <p>Surname:
-        <input type="text" th:field="*{surname}"/>
+        <input th:field="*{userDetailsDto.surname}" type="text"/>
+    </p>
     <p>Date of birth:
-        <input type="text" th:field="*{bornDate}"/>
-    </p>Email:
-    <input type="text" th:field="*{email}"/>
+        <input th:field="*{userDetailsDto.bornDate}" type="text"/>
     </p>
-    </p>Login:
-    <input type="text" th:field="*{email}"/>
+    <p> Email:
+        <input th:field="*{userDetailsDto.email}" type="text"/>
     </p>
-    </p>Password:
-    <input type="text" th:field="*{email}"/>
+    <p> Login:
+        <input th:field="*{login}" type="text"/>
+    </p>
+    <p>Password:
+        <input th:field="*{password}" type="password"/>
     </p>
     <p>
         <input type="submit" value="Submit"/>
@@ -33,3 +33,7 @@
 </form>
 </body>
 </html>
+Collapse
+
+
+Message Input
