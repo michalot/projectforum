@@ -9,10 +9,18 @@ public class UserDto {
     private String password;
     private String role;
     private Date lockDate;
-    private Date joinDate;
+    private Date unlockDate;
     private Long userDetailsId;
 
     public UserDto() {
+    }
+
+    public Date getUnlockDate() {
+        return unlockDate;
+    }
+
+    public void setUnlockDate(Date unlockDate) {
+        this.unlockDate = unlockDate;
     }
 
     public Long getId() {
@@ -53,14 +61,6 @@ public class UserDto {
 
     public void setLockDate(Date lockDate) {
         this.lockDate = lockDate;
-    }
-
-    public Date getJoinDate() {
-        return joinDate;
-    }
-
-    public void setJoinDate(Date joinDate) {
-        this.joinDate = joinDate;
     }
 
     public Long getUserDetailsId() {

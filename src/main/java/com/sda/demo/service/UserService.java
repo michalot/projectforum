@@ -33,9 +33,10 @@ public class UserService {
 
     public void saveUser(UserDto userDto) throws ParseException {
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String newDateFormat = sdf.format(new Date());
-        userDto.setJoinDate((sdf.parse(newDateFormat)));
+        userDto.setUnlockDate((sdf.parse(newDateFormat)));
 
         User userToSave = modelMapper.map(userDto, User.class);
 

@@ -11,11 +11,11 @@ public class UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private User user;
     private String name;
     private String surname;
     private String email;
     private Date bornDate;
-    private Date joinDate;
 
     public Long getId() {
         return id;
@@ -24,12 +24,23 @@ public class UserDetails {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public String getSurname() {
         return surname;
     }
@@ -61,4 +72,9 @@ public class UserDetails {
     public void setJoinDate(Date joinDate) {
         this.joinDate = joinDate;
     }
+
+    private Date joinDate;
+
 }
+
+
