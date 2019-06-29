@@ -1,9 +1,6 @@
 package com.sda.demo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -15,7 +12,7 @@ public class User {
     private String password;
     private String role;
     private Date lockDate;
-    private Date joinDate;
+    private Date unlockDate;
     private Long userDetailsId;
 
     public Long getId() {
@@ -58,12 +55,12 @@ public class User {
         this.lockDate = lockDate;
     }
 
-    public Date getJoinDate() {
-        return joinDate;
+    public Date getUnlockDateDate() {
+        return unlockDate;
     }
 
-    public void setJoinDate(Date joinDate) {
-        this.joinDate = joinDate;
+    public void setUnlockDate(Date joinDate) {
+        this.unlockDate = joinDate;
     }
 
     public Long getUserDetailsId() {

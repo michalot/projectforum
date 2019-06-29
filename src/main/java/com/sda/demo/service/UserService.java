@@ -6,14 +6,13 @@ import com.sda.demo.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
-
-@Service   // klasa z logiką biznesową
+@Service
 public class UserService {
 
     private UserRepository userRepository;
@@ -53,4 +52,5 @@ public class UserService {
                 .map( u-> modelMapper.map(u, UserDto.class))
                 .collect(Collectors.toList());
     }
+
 }
