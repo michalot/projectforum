@@ -6,7 +6,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
-
 @Entity
 public class User {
     @Id
@@ -16,6 +15,8 @@ public class User {
     private String password;
     private String role;
     private Date lockDate;
+    private Date unlockDate;
+    private Long userDetailsId;
 
     public Long getId() {
         return id;
@@ -57,15 +58,20 @@ public class User {
         this.lockDate = lockDate;
     }
 
-    public Date getUnlockDate() {
+    public Date getUnlockDateDate() {
         return unlockDate;
     }
 
-    public void setUnlockDate(Date unlockDate) {
-        this.unlockDate = unlockDate;
+    public void setUnlockDate(Date joinDate) {
+        this.unlockDate = joinDate;
     }
 
-    private Date unlockDate;
+    public Long getUserDetailsId() {
+        return userDetailsId;
+    }
+
+    public void setUserDetailsId(Long userDetailsId) {
+        this.userDetailsId = userDetailsId;
+    }
 
 }
-

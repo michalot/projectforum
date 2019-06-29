@@ -21,7 +21,7 @@ public class UserController {
 
     @GetMapping("/adduser")
     public ModelAndView addUser() {
-        return new ModelAndView("userForm", "userToInsert",
+        return new ModelAndView("adduser", "userToInsert",
                 new UserDto());
     }
 

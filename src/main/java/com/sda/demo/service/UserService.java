@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service   // klasa z logiką biznesową
+@Service
 public class UserService {
 
     private UserRepository userRepository;
@@ -54,4 +54,5 @@ public class UserService {
                 .map(u -> modelMapper.map(u, UserDto.class))
                 .collect(Collectors.toList());
     }
+
 }
