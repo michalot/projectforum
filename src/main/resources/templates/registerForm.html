@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http:/>/www.w3.org/1999.xhtml"
+      xmln:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+
+    <title>Register in forum</title>
+</head>
+<h3>User form</h3>
+
+<body class="text-center">
+<form class="sign" th:action="@{/register-link}" method="post" th:object="${userToInsert}">
+    <p>Name:
+        <input type="text" th:field="*{name}"/>
+    </p>
+    <p>Surname:
+        <input type="text" th:field="*{surname}"/>
+    <p>Date of birth:
+        <input type="text" th:field="*{bornDate}"/>
+    </p>Email:
+    <input type="text" th:field="*{email}"/>
+    </p>
+    </p>Login:
+    <input type="text" th:field="*{email}"/>
+    </p>
+    </p>Password:
+    <input type="text" th:field="*{email}"/>
+    </p>
+    <p>
+        <input type="submit" value="Submit"/>
+        <input type="reset" value="Reset"/>
+    </p>
+</form>
+</body>
+</html>
