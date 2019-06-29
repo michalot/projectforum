@@ -1,13 +1,18 @@
 package com.sda.demo.model;
 
-import java.sql.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 public class UserDetailsDto {
     private Long id;
     private String name;
     private String surname;
     private String email;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date bornDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date joinDate;
 
     public UserDetailsDto() {

@@ -10,18 +10,19 @@ public class UserDto {
     private String role;
     private Date lockDate;
     private Date unlockDate;
-    private Long userDetailsId;
-    private UserDetailsDto userDetailsDto;
+    private UserDetailsDto userDetails;
 
-    public UserDetailsDto getUserDetailsDto() {
-        return userDetailsDto;
-    }
-
-    public void setUserDetailsDto(UserDetailsDto userDetailsDto) {
-        this.userDetailsDto = userDetailsDto;
-    }
 
     public UserDto() {
+        this.role = "USER";
+    }
+
+    public UserDetailsDto getUserDetails() {
+        return userDetails;
+    }
+
+    public void setUserDetails(UserDetailsDto userDetails) {
+        this.userDetails = userDetails;
     }
 
     public Date getUnlockDate() {
@@ -70,13 +71,5 @@ public class UserDto {
 
     public void setLockDate(Date lockDate) {
         this.lockDate = lockDate;
-    }
-
-    public Long getUserDetailsId() {
-        return userDetailsId;
-    }
-
-    public void setUserDetailsId(Long userDetailsId) {
-        this.userDetailsId = userDetailsId;
     }
 }

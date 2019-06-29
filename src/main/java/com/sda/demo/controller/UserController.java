@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.text.ParseException;
 import java.util.List;
 
 @Controller
@@ -26,10 +25,9 @@ public class UserController {
     }
 
     @PostMapping("/adduser")
-    public String addUser(@ModelAttribute UserDto userDto) throws ParseException {
+    public String addUser(@ModelAttribute UserDto userDto) throws Exception {
         System.out.println(userDto.getLogin());
         userService.saveUser(userDto);
-
         return "userSaveResult";
     }
 

@@ -1,20 +1,23 @@
 package com.sda.demo.entity;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "user_details")
 public class UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private User user;
     private String name;
     private String surname;
     private String email;
+    @Column(name = "born_date")
     private Date bornDate;
+
+    @Column(name = "join_date")
+    private Date joinDate;
 
     public Long getId() {
         return id;
@@ -22,14 +25,6 @@ public class UserDetails {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     public String getName() {
@@ -71,9 +66,6 @@ public class UserDetails {
     public void setJoinDate(Date joinDate) {
         this.joinDate = joinDate;
     }
-
-    private Date joinDate;
-
 }
 
 

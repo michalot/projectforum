@@ -36,7 +36,7 @@ public class UserService {
         //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         String newDateFormat = sdf.format(new Date());
-        userDto.setUnlockDate((sdf.parse(newDateFormat)));
+        userDto.getUserDetails().setJoinDate((sdf.parse(newDateFormat)));
 
         User userToSave = modelMapper.map(userDto, User.class);
 

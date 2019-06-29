@@ -4,7 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -17,12 +17,11 @@ import javax.sql.DataSource;
 
 @Configuration
 
-//@EnableJpaRepositories(basePackages = {"com.aileron.workshop.repository"})
+@EnableJpaRepositories(basePackages = {"com.sda.demo.repository"})
 @EnableTransactionManagement
 public class SpringConfig {
 
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Bean
     public ModelMapper modelMapper() {
         return new ModelMapper();

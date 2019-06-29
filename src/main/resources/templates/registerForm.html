@@ -9,16 +9,16 @@
 <body class="text-center">
 <form class="sign" method="post" th:action="@{/register}" th:object="${userToInsert}">
     <p>Name:
-        <input th:field="*{userDetailsDto.name}" type="text"/>
+        <input th:field="*{userDetails.name}" type="text"/>
     </p>
     <p>Surname:
-        <input th:field="*{userDetailsDto.surname}" type="text"/>
+        <input th:field="*{userDetails.surname}" type="text"/>
     </p>
     <p>Date of birth:
-        <input th:field="*{userDetailsDto.bornDate}" type="text"/>
+        <input th:field="*{userDetails.bornDate}" type="date"/>
     </p>
     <p> Email:
-        <input th:field="*{userDetailsDto.email}" type="text"/>
+        <input th:field="*{userDetails.email}" type="text"/>
     </p>
     <p> Login:
         <input th:field="*{login}" type="text"/>
@@ -33,7 +33,3 @@
 </form>
 </body>
 </html>
-Collapse
-
-
-Message Input

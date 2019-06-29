@@ -1,7 +1,10 @@
 package com.sda.demo.entity;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -11,12 +14,36 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false, length = 30, unique = true)
     private String login;
+    @Column(length = 60)
+    @Length(min = 5, message = "Your password must have at least 5 characters")
     private String password;
     private String role;
+    @Column(name = "lock_date")
     private Date lockDate;
+
+    @Column(name = "unlock_date")
     private Date unlockDate;
-    private Long userDetailsId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_details_id")
+    private UserDetails userDetails;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Post> posts;
+
+    public User() {
+    }
+
+    public UserDetails getUserDetails() {
+        return userDetails;
+    }
+
+    public void setUserDetails(UserDetails userDetails) {
+        this.userDetails = userDetails;
+    }
 
     public Long getId() {
         return id;
@@ -64,14 +91,6 @@ public class User {
 
     public void setUnlockDate(Date joinDate) {
         this.unlockDate = joinDate;
-    }
-
-    public Long getUserDetailsId() {
-        return userDetailsId;
-    }
-
-    public void setUserDetailsId(Long userDetailsId) {
-        this.userDetailsId = userDetailsId;
     }
 
 }

@@ -1,9 +1,6 @@
 package com.sda.demo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -15,11 +12,10 @@ public class Comment {
     private Date createDate;
     private Date modifyDate;
     private Date deleteDate;
-    private Long userId;
-    private Long postId;
-
-    public Comment() {
-    }
+    @ManyToOne(cascade = CascadeType.ALL)
+    private User user;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Post post;
 
     public Long getId() {
         return id;
@@ -53,19 +49,19 @@ public class Comment {
         this.deleteDate = deleteDate;
     }
 
-    public Long getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public Long getPostId() {
-        return postId;
+    public Post getPost() {
+        return post;
     }
 
-    public void setPostId(Long postId) {
-        this.postId = postId;
+    public void setPost(Post post) {
+        this.post = post;
     }
 }
