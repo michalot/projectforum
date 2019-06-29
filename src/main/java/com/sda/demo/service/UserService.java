@@ -25,9 +25,9 @@ public class UserService {
         this.modelMapper = modelMapper;
     }
 
-    public void deleteUser(UserDto userDto){
+    public void deleteUser(UserDto userDto) {
         User user = userRepository.findUserByLogin(userDto.getLogin())
-                .orElseThrow(()-> new RuntimeException("User Not Found!"));
+                .orElseThrow(() -> new RuntimeException("User Not Found!"));
         userRepository.delete(user);
     }
 
@@ -43,7 +43,7 @@ public class UserService {
         userRepository.save(userToSave);
     }
 
-    public List<UserDto> getAllUsers(){
+    public List<UserDto> getAllUsers() {
         List<User> users = userRepository.findAll();
 
 //        List<UserDto> usersDto = new ArrayList<>();
@@ -51,7 +51,7 @@ public class UserService {
 //            usersDto.add(modelMapper.map(user, UserDto.class));
 //        }
         return users.stream()
-                .map( u-> modelMapper.map(u, UserDto.class))
+                .map(u -> modelMapper.map(u, UserDto.class))
                 .collect(Collectors.toList());
     }
 }
