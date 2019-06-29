@@ -1,6 +1,7 @@
 package com.sda.demo.controller;
 
 import com.sda.demo.model.UserDto;
+import com.sda.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +27,7 @@ public class UserController {
 
     @PostMapping("/adduser")
     public String addUser(@ModelAttribute UserDto userDto) throws ParseException {
-        System.out.println(userDto.getName() + " " + userDto.getSurname());
+        System.out.println(userDto.getLogin());
         userService.saveUser(userDto);
 
         return "userSaveResult";

@@ -1,9 +1,9 @@
 package com.sda.demo.configuration;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -18,6 +18,12 @@ import javax.sql.DataSource;
 //@EnableJpaRepositories(basePackages = {"com.aileron.workshop.repository"})
 @EnableTransactionManagement
 public class SpringConfig {
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
+
     @Bean
     public DataSource dataSource() {
 
@@ -35,7 +41,7 @@ public class SpringConfig {
         LocalContainerEntityManagerFactoryBean entityManager = new LocalContainerEntityManagerFactoryBean();
         entityManager.setDataSource(dataSource());
         entityManager.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        entityManager.setPackagesToScan("com.alleron.workshop.entity");
+        entityManager.setPackagesToScan("com.sda.demo.entity");
         return entityManager;
     }
 
