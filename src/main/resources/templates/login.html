@@ -6,7 +6,8 @@
 <title>LOGIN</title>
 
 <body class="text-center">
-<form class="sign" method="post" th:action="@{/login-process}">
+
+<form method="post" th:action="@{/login-process}">
 
     <p class="alert alert-danger" th:if="${param.error}" th:text="'Podany login lub hasło są nieprawidłowe'"/>
 

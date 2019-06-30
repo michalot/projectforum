@@ -14,7 +14,7 @@ public class UserDto {
 
 
     public UserDto() {
-        this.role = "USER";
+        this.role = "ROLE_USER";
     }
 
     public UserDetailsDto getUserDetails() {

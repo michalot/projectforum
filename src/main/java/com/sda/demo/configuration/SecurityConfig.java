@@ -16,12 +16,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/users")
-                .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
-                .antMatchers("/adduser")
-                .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
-                .antMatchers("/")
-                .hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
                 .anyRequest().permitAll()
                 .and()
                 .csrf().disable()
@@ -35,13 +29,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login?error")
                 .defaultSuccessUrl("/index")
                 .and()
-                .logout().logoutSuccessUrl("/login");
+                .logout().logoutSuccessUrl("/index");
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("user")
+                .withUser("user1")
                 .password("password")
                 .roles("USER")
                 .and()
@@ -49,8 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .password("password")
                 .roles("ADMIN");
         auth.jdbcAuthentication()
-                .usersByUsernameQuery("select u.username, u.password,1 from application_user u where u.username=?")
-                .authoritiesByUsernameQuery("select u.username, u.role,1 from application_user u where u.username=?")
+                .usersByUsernameQuery("select u.login, u.password,1  from user u where u.login=?")
+                .authoritiesByUsernameQuery("select u.login, u.role, 1 from user u where u.login=?")
                 .dataSource(jdbcTemplate.getDataSource());
     }
 
