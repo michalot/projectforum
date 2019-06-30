@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.w3.org/1999/xhtml"
->
+      xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="UTF-8"/>
-<body>
+    <title>Put a post</title>
+</head>
+<h3>Post form</h3>
+<body class="text-center">
+<form class="sign" method="post" th:action="@{/addpost}" th:object="${postToInsert}">
 
-<form action="/addpost" method="post">
-
-    <form th:action="@{/addpost}" method="post" th:object="${post}">
+    <p>Text:
+        <input th:field="*{text}" type="text"/>
         <button class="btn btn-success" type="submit"> Add a post</button>
-    </form>
+    </p>
+
 </form>
 
 </body>

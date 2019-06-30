@@ -8,8 +8,6 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "user")
-@SecondaryTable(name = "userDetails", pkJoinColumns = @PrimaryKeyJoinColumn(name = "id"))
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

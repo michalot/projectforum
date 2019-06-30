@@ -1,136 +1,62 @@
 package com.sda.demo.service;
 
 import com.sda.demo.entity.Post;
+import com.sda.demo.entity.User;
+import com.sda.demo.exception.UnsupportedException;
+import com.sda.demo.model.PostDto;
 import com.sda.demo.repository.PostRepository;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class PostService implements PostRepository {
+@Service
+public class PostService {
 
+    private PostRepository postRepository;
+    private ModelMapper modelMapper;
+    private UserService userService;
 
-    @Override
-    public List<Post> findAll() {
-        return null;
+    @Autowired
+    public PostService(PostRepository postRepository, ModelMapper modelMapper, UserService userService) {
+        this.postRepository = postRepository;
+        this.modelMapper = modelMapper;
+        this.userService = userService;
     }
 
-    @Override
-    public List<Post> findAll(Sort sort) {
-        return null;
+
+    public void savePost(PostDto postDto) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        prepareCreateDate(postDto, sdf);
+        Post postToSave = modelMapper.map(postDto, Post.class);
+        User loggedUser = userService.getCurrentUser();
+        postToSave.setUser(loggedUser);
+        postRepository.save(postToSave);
     }
 
-    @Override
-    public Page<Post> findAll(Pageable pageable) {
-        return null;
+    private void prepareCreateDate(PostDto postDto, SimpleDateFormat sdf) {
+        String newDateFormat = sdf.format(new Date());
+        try {
+            postDto.setCreateDate(sdf.parse(newDateFormat));
+        } catch (ParseException e) {
+            e.printStackTrace();
+            throw new UnsupportedException(e.getMessage());
+        }
     }
 
-    @Override
-    public List<Post> findAll(Iterable<Long> iterable) {
-        return null;
+    public List<PostDto> getAllPosts() {
+        List<PostDto> dtoPosts = new ArrayList<>();
+        List<Post> posts = postRepository.findAll();
+        modelMapper.map(posts, dtoPosts);
+        return dtoPosts;
     }
-
-    @Override
-    public long count() {
-        return 0;
-    }
-
-    @Override
-    public void delete(Long aLong) {
-
-    }
-
-    @Override
-    public void delete(Post post) {
-
-    }
-
-    @Override
-    public void delete(Iterable<? extends Post> iterable) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
-
-    @Override
-    public <S extends Post> S save(S s) {
-        return null;
-    }
-
-    @Override
-    public <S extends Post> List<S> save(Iterable<S> iterable) {
-        return null;
-    }
-
-    @Override
-    public Post findOne(Long aLong) {
-        return null;
-    }
-
-    @Override
-    public boolean exists(Long aLong) {
-        return false;
-    }
-
-    @Override
-    public void flush() {
-
-    }
-
-    @Override
-    public <S extends Post> S saveAndFlush(S s) {
-        return null;
-    }
-
-    @Override
-    public void deleteInBatch(Iterable<Post> iterable) {
-
-    }
-
-    @Override
-    public void deleteAllInBatch() {
-
-    }
-
-    @Override
-    public Post getOne(Long aLong) {
-        return null;
-    }
-
-    @Override
-    public <S extends Post> S findOne(Example<S> example) {
-        return null;
-    }
-
-    @Override
-    public <S extends Post> List<S> findAll(Example<S> example) {
-        return null;
-    }
-
-    @Override
-    public <S extends Post> List<S> findAll(Example<S> example, Sort sort) {
-        return null;
-    }
-
-    @Override
-    public <S extends Post> Page<S> findAll(Example<S> example, Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public <S extends Post> long count(Example<S> example) {
-        return 0;
-    }
-
-    @Override
-    public <S extends Post> boolean exists(Example<S> example) {
-        return false;
-    }
-
 
 }
+
+
+

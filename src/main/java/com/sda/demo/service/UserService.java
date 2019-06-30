@@ -6,6 +6,9 @@ import com.sda.demo.model.UserDto;
 import com.sda.demo.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -27,9 +30,13 @@ public class UserService {
     }
 
     public void deleteUser(UserDto userDto) {
-        User user = userRepository.findUserByLogin(userDto.getLogin())
-                .orElseThrow(() -> new RuntimeException("User Not Found!"));
+        User user = getUserByLogin(userDto.getLogin());
         userRepository.delete(user);
+    }
+
+    private User getUserByLogin(String login) {
+        return userRepository.findUserByLogin(login)
+                .orElseThrow(() -> new RuntimeException("User Not Found!"));
     }
 
     public void saveUser(UserDto userDto) throws ParseException {
@@ -54,6 +61,11 @@ public class UserService {
         return users.stream()
                 .map(u -> modelMapper.map(u, UserDto.class))
                 .collect(Collectors.toList());
+    }
+
+    public User getCurrentUser() {
+        String login = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+        return getUserByLogin(login);
     }
 
 }
