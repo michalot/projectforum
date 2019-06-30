@@ -1,6 +1,4 @@
 package com.sda.demo.model;
-
-
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;

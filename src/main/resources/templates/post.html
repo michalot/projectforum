@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.w3.org/1999/xhtml"
 >
-<head>
     <meta charset="UTF-8"/>
 <body>
-<form action="/action.php" method="post">
 
-    <textarea cols="40" name="comments" rows="8"></textarea><br/>
+<form action="/addpost" method="post">
 
-    <form action="/users">
+    <form th:action="@{/addpost}" method="post" th:object="${post}">
         <button class="btn btn-success" type="submit"> Add a post</button>
     </form>
 </form>
-</head>
+
 </body>
 </html>

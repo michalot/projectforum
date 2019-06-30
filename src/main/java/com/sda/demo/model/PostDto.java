@@ -7,7 +7,8 @@ public class PostDto {
     private Long id;
     private Date createDate;
     private String text;
-    private Date modifyDate;    private Long userId;
+    private Date modifyDate;
+    private Long userId;
     private Date deleteDate;
 
     public PostDto() {
