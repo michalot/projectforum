@@ -17,14 +17,13 @@
     </thead>
     <tbody>
 
-    <tr th:each="userDetails:${allUsers}">
+    <tr th:each="user:${allUsers}">
         <form th:action="@{/deleteuser}" method="post" th:object="${user}">
-            <td th:text="${userDetails.name}"></td>
-            <td th:text="${userDetails.surname}"></td>
-            <td th:text="${userDetails.email}"></td>
+            <td th:text="${user.login}"></td>
+            <td th:text="${user.password}"></td>
             <td>
             <input type="hidden" name="name" th:value="${user.id}"/>
-            <input type="hidden" name="surname" th:value="${user.surname}"/>
+                <input name="surname" th:value="${user.login}" type="hidden"/>
             <button value="remove">Usuń</button>
             </td>
         </form>

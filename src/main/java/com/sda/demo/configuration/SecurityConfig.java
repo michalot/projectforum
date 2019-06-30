@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .loginProcessingUrl("/login-process")
                 .failureUrl("/login?error")
-                .defaultSuccessUrl("/index")
+                .defaultSuccessUrl("/loggedusers")
                 .and()
                 .logout().logoutSuccessUrl("/index");
     }
@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("user1")
+                .withUser("user")
                 .password("password")
                 .roles("USER")
                 .and()

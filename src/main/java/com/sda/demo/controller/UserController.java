@@ -33,7 +33,8 @@ public class UserController {
 
     @GetMapping("/users")
     public String showAllUsers(Model model) {
-        List<UserDto> users = userService.getAllUsers();
+        List<UserDto> users;
+        users = userService.getAllUsers();
         model.addAttribute("allUsers", users);
         return "userList";
     }
