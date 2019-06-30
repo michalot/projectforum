@@ -1,5 +1,6 @@
 package com.sda.demo.service;
 
+import com.sda.demo.entity.Post;
 import com.sda.demo.entity.User;
 import com.sda.demo.model.UserDto;
 import com.sda.demo.repository.UserRepository;
