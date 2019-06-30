@@ -8,14 +8,16 @@ import java.util.List;
 @Entity
 public class Post {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name="create_date")
     private Date createDate;
     private String text;
+    @Column(name="modify_date")
     private Date modifyDate;
     @ManyToOne(cascade = CascadeType.ALL)
     private User user;
+    @Column(name="delete_date")
     private Date deleteDate;
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments;
@@ -75,5 +77,4 @@ public class Post {
     public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
-
 }

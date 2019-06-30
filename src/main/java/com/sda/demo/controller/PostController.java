@@ -1,72 +1,49 @@
 package com.sda.demo.controller;
 
-import com.sda.demo.entity.Post;
 import com.sda.demo.model.PostDto;
-import com.sda.demo.model.UserDto;
-import com.sda.demo.repository.PostRepository;
 import com.sda.demo.service.PostService;
-import com.sda.demo.service.UserService;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
 public class PostController {
-
-    private PostRepository postRepository;
-    private PostController postController;
+    @Autowired
     private PostService postService;
 
-
-    @Autowired
-
-  /*  @GetMapping("/addpost")
+    @RequestMapping("/addpost")
     public ModelAndView addPost() {
-        Post post = new Post();
-
-        return new ModelAndView("post", "newPost",
-                    new PostDto());
-    }
-*/
-    @GetMapping("/addpost")
-    public String addPost(@RequestParam String text) {
-
-        Post post = new Post();
-        post.setText(text);
-        postRepository.save(post);
-        return "Saved";
+        return new ModelAndView
+                ("post", "postToInsert", new PostDto());
     }
 
-    @PostMapping("/allPosts")
-    public ModelAndView create() {
+    @RequestMapping(value = "/addpost", method = RequestMethod.POST)
+    public ModelAndView create(@Valid PostDto postDto, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView();
-        Post post = new Post();
-        modelAndView.addObject(post);
-        modelAndView.setViewName("posts/create");
-        return modelAndView;
 
-    }
-
-    @RequestMapping("/listOfPosts/")
-    public String findAllPosts() {
-        List<Post> posts = this.postService.findAll();
-        if (posts.isEmpty()) {
-            return "redirect";
+        if (postDto.getText().isEmpty()) {
+            bindingResult.rejectValue("text", "error.post", "Content cannot be empty");
         } else {
-            posts = postService.findAll();
-            return "listOfPosts";
+            postService.savePost(postDto);
+            modelAndView.addObject("successMessage", "Post has been created");
+            modelAndView.addObject("postToInsert", new PostDto());
         }
+        modelAndView.setViewName("post");
+        return modelAndView;
     }
 
-    @ModelAttribute("currentUserName")
-    public String getCurrentUserName() {
-        return SecurityContextHolder.getContext().getAuthentication().getName();
+
+    @RequestMapping("/listOfPosts")
+    public String findAllPosts(Model model) {
+        List<PostDto> posts = this.postService.getAllPosts();
+        model.addAttribute("allPosts", posts);
+        return "listOfPosts";
     }
 }
-

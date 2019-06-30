@@ -11,9 +11,6 @@ public class PostDto {
     private Long userId;
     private Date deleteDate;
 
-    public PostDto() {
-    }
-
     public Long getId() {
         return id;
     }
@@ -61,4 +58,5 @@ public class PostDto {
     public void setDeleteDate(Date deleteDate) {
         this.deleteDate = deleteDate;
     }
+
 }
