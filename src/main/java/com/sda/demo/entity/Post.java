@@ -10,17 +10,26 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="create_date")
+    @Column(name = "create_date")
     private Date createDate;
+    private String subject;
     private String text;
-    @Column(name="modify_date")
+    @Column(name = "modify_date")
     private Date modifyDate;
     @ManyToOne(cascade = CascadeType.ALL)
     private User user;
-    @Column(name="delete_date")
+    @Column(name = "delete_date")
     private Date deleteDate;
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments;
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
 
     public Long getId() {
         return id;

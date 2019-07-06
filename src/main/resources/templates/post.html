@@ -9,6 +9,10 @@
 <body class="text-center">
 <form class="sign" method="post" th:action="@{/addpost}" th:object="${postToInsert}">
 
+    <p>Subject:
+        <input th:field="*{subject}" type="text"/>
+    </p>
+
     <p>Text:
         <input th:field="*{text}" type="text"/>
         <button class="btn btn-success" type="submit"> Add a post</button>
