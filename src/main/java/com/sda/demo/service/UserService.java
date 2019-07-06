@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -22,12 +23,14 @@ public class UserService {
 
     private UserRepository userRepository;
     private ModelMapper modelMapper;
-
-    @Autowired
-    public UserService(UserRepository userRepository, ModelMapper modelMapper) {
+    private PasswordEncoder passwordEncoder;
+@Autowired
+    public UserService(UserRepository userRepository, ModelMapper modelMapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
+        this.passwordEncoder = passwordEncoder;
     }
+
 
     public void deleteUser(UserDto userDto) {
         User user = getUserByLogin(userDto.getLogin());
@@ -48,6 +51,8 @@ public class UserService {
 
         User userToSave = modelMapper.map(userDto, User.class);
 
+        userToSave.setPassword(passwordEncoder.encode(userDto.getPassword()));
+
         userRepository.save(userToSave);
     }
 
@@ -64,8 +69,8 @@ public class UserService {
     }
 
     public User getCurrentUser() {
-        String login = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
-        return getUserByLogin(login);
-    }
 
+         String login = ((UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername();
+         return getUserByLogin(login);
+    }
 }

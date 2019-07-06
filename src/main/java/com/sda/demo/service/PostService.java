@@ -29,7 +29,6 @@ public class PostService {
         this.userService = userService;
     }
 
-
     public void savePost(PostDto postDto) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         prepareCreateDate(postDto, sdf);
@@ -55,7 +54,6 @@ public class PostService {
         modelMapper.map(posts, dtoPosts);
         return dtoPosts;
     }
-
 }
 
 

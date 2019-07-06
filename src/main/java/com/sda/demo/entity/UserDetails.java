@@ -66,6 +66,7 @@ public class UserDetails {
     public void setJoinDate(Date joinDate) {
         this.joinDate = joinDate;
     }
+
 }
 
 

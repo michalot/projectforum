@@ -1,12 +1,32 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
->
-<head>
+      xmlns:form="http://www.w3.org/1999/xhtml">
     <meta charset="UTF-8"/>
     <title>List of Post</title>
-</head>
-<body>
+   <body>
+   <a href="/listOfPosts">List of Posts</a>
 
-</body>
+   <table>
+       <thead>
+       <tr>
+           <th>Login</th>
+           <th>Subject</th>
+           <th>Post</th>
+       </tr>
+       </thead>
+       <tbody>
+       <tr form:each="user: ${postDto}">
+           <form action="/getAllPosts" method="post" form:object="${postDto}">
+               <td form:text="${post.id}"></td>
+               <td form:text="${post.subject}"></td>
+               <td form:text="${post.text}"></td>
+               <td>
+                   <button value="remove">Delete</button>
+               </td>
+           </form>
+       </tr>
+       </tbody>
+   </table>
+
+    </body>
 </html>

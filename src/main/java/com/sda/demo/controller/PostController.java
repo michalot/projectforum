@@ -35,7 +35,7 @@ public class PostController {
             modelAndView.addObject("successMessage", "Post has been created");
             modelAndView.addObject("postToInsert", new PostDto());
         }
-        modelAndView.setViewName("post");
+        modelAndView.setViewName("postAdded");
         return modelAndView;
     }
 
