@@ -6,10 +6,19 @@ public class PostDto {
 
     private Long id;
     private Date createDate;
+    private String subject;
     private String text;
     private Date modifyDate;
     private Long userId;
     private Date deleteDate;
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
 
     public Long getId() {
         return id;
